@@ -24,8 +24,9 @@ variable "private_subnet_cidrs" {
 }
 
 variable "instance_size" {
-  type    = string
-  default = "t3.medium"
+  type = string
+  #default = "g4ad.xlarge"
+  default = "c7i.4xlarge"
 }
 
 variable "allow_access_from" {
