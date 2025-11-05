@@ -90,11 +90,11 @@ module "network" {
 
 # --- security (SGs)
 module "security" {
-  source         = "./modules/security"
-  vpc_id         = module.network.vpc_id
-  public_subnets = module.network.public_subnets
-  environment    = var.environment
-  allow_ssh_from = var.allow_ssh_from
+  source            = "./modules/security"
+  vpc_id            = module.network.vpc_id
+  public_subnets    = module.network.public_subnets
+  environment       = var.environment
+  allow_access_from = var.allow_access_from
 }
 
 # --- compute (ASG + LT + ALB)

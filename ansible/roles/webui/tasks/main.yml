@@ -34,35 +34,9 @@
 
   - name: Install Python requirements (AMD optimized) in venv
     pip:
-      requirements: /home/ubuntu/text-generation-webui/requirements/full/requirements_amd.txt
+      requirements: /home/ubuntu/text-generation-webui/requirements/full/requirements.txt
       executable: /home/ubuntu/webui-venv/bin/pip
 
-  - name: Create models directory
-    file:
-      path: /home/ubuntu/text-generation-webui/user_data/models
-      state: directory
-      owner: ubuntu
-      group: ubuntu
-      mode: '0755'
-
-  - name: Download TinyLlama 1.1B Chat from Hugging Face
-    become_user: ubuntu
-    shell: |
-      set -e
-      cd /home/ubuntu/text-generation-webui/user_data/models
-      if [ ! -d "TinyLlama-1.1B-Chat" ]; then
-        git clone https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0 TinyLlama-1.1B-Chat
-      fi
-    args:
-      executable: /bin/bash
-
-  - name: Set ownership on TinyLlama model directory
-    file:
-      path: /home/ubuntu/text-generation-webui/user_data/models/TinyLlama-1.1B-Chat
-      state: directory
-      owner: ubuntu
-      group: ubuntu
-      recurse: yes
 
   - name: Create systemd service for text-generation-webui
     copy:

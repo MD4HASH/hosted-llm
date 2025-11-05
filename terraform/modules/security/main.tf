@@ -10,7 +10,7 @@ resource "aws_security_group" "alb_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.allow_access_from]
   }
 
   egress {
@@ -35,13 +35,22 @@ resource "aws_security_group" "instance_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.allow_ssh_from]
+    cidr_blocks = [var.allow_access_from]
   }
 
   ingress {
     description = "App port from ALB"
     from_port   = 7860
     to_port     = 7860
+    protocol    = "tcp"
+    # allow only from ALB SG (reference in compute module)
+    security_groups = [aws_security_group.alb_sg.id]
+  }
+
+  ingress {
+    description = "web server"
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     # allow only from ALB SG (reference in compute module)
     security_groups = [aws_security_group.alb_sg.id]

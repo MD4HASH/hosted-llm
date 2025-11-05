@@ -28,8 +28,8 @@ variable "instance_size" {
   default = "t3.medium"
 }
 
-variable "allow_ssh_from" {
-  description = "CIDR allowed to SSH to instances (default 0.0.0.0/0 like original)"
+variable "allow_access_from" {
+  description = "CIDR allowed to access instances(default 0.0.0.0/0 like original)"
   type        = string
   default     = "0.0.0.0/0"
 }
@@ -53,4 +53,10 @@ variable "ansible_repo_url" {
   description = "Git repository URL for Ansible playbooks"
   type        = string
   default     = "https://github.com/MD4HASH/portfolio"
+}
+
+variable "source_cidr_blocks" {
+  description = "List of CIDR blocks allowed for access"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
 }
