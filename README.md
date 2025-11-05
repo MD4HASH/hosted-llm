@@ -1,6 +1,6 @@
 # Introduction
 
-This repository contains terraform and ansible code that deploys an instance of the open-source AI platform [Open Webui](https://openwebui.com) in AWS.  It enables you to run any open-source LLM in your own AWS account, giving you full control over your data while leveraging scalable cloud resources. The deployment is simple and cost-efficient: spin up a model instance on demand and destroy it when not in use, all with a few clicks.
+This repository contains terraform and ansible code that deploys an instance of the open-source AI platform [Open Webui](https://openwebui.com) in AWS.  It enables you to run any open-source LLM in your own AWS account, giving you full control over your data while leveraging scalable cloud resources. The deployment model is simple and cost-efficient: spin up a model instance on demand and destroy it when not in use.
 
 The infrustracture contians:
 
