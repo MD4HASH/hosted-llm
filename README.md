@@ -26,7 +26,7 @@ The infrustracture contians:
 - navigate to `/terraform` and run `terraform init`, `terraform plan`, `terraform apply`
 - This will deploy the rest of the infrastructure
 - The ASG contains a cloud-init script that will bootstrap the installation of ansible, clone this respository, and run the playbook located in `/ansible`, which installs and configures Open Webui.  
-- When done, from the same directory, run `terraform destroy`
+- When ready to decommision the environment, from the same directory, run `terraform destroy`
 
 ![terraform](./images/terraform.png)
 ![webui](./images/webui.png)
